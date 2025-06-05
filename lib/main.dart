@@ -9,69 +9,37 @@ class XylophoneApp extends StatelessWidget {
     player.play(AssetSource("note$soundNumber.wav"));
   }
 
+  Expanded soundId({required int sound, required Color color}) {
+    return Expanded(
+      child: ElevatedButton(
+          onPressed: () {
+            playSound(sound);
+          },
+          child: null,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: color,
+          )),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "xylophone",
       home: Scaffold(
+        backgroundColor: Colors.black,
         body: SafeArea(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              ElevatedButton(
-                  onPressed: () {
-                    playSound(1);
-                  },
-                  child: null,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red,
-                  )),
-              ElevatedButton(
-                  onPressed: () {
-                    playSound(2);
-                  },
-                  child: null,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orange,
-                  )),
-              ElevatedButton(
-                  onPressed: () {
-                    playSound(3);
-                  },
-                  child: null,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.yellow,
-                  )),
-              ElevatedButton(
-                  onPressed: () {
-                    playSound(4);
-                  },
-                  child: null,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                  )),
-              ElevatedButton(
-                  onPressed: () {
-                    playSound(5);
-                  },
-                  child: null,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.teal,
-                  )),
-              ElevatedButton(
-                  onPressed: () {
-                    playSound(6);
-                  },
-                  child: null,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                  )),
-              ElevatedButton(
-                  onPressed: () {
-                    playSound(7);
-                  },
-                  child: null,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.purple,
-                  )),
+              soundId(sound: 1, color: Colors.red),
+              soundId(sound: 2, color: Colors.orange),
+              soundId(sound: 3, color: Colors.yellow),
+              soundId(sound: 4, color: Colors.green),
+              soundId(sound: 5, color: Colors.teal),
+              soundId(sound: 6, color: Colors.blue),
+              soundId(sound: 7, color: Colors.purple),
             ],
           ),
         ),
